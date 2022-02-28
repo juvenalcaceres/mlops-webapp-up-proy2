@@ -8,4 +8,6 @@ Esta repositorio se creo para el desarrollo de una web que permita testear un ap
 ```
 
 - web:
-w
+```bash
+https://mlops-webapp.herokuapp.com/
+```
