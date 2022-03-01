@@ -63,21 +63,44 @@ def read_params(config_path):
         config = yaml.safe_load(yaml_file)
     return config
 
+class  NotANumber(Exception):
+    def __init__(self, message="Values entered are not Numerical"):
+        self.message = message
+        super().__init__(self.message)
+
+def validate_input(dict_request):
+    for _, val in dict_request.items():
+        try:
+            val=int(val)
+        except Exception as e:
+            raise NotANumber
+    return True
+
 def predict_api(data_json):
-    config = read_params(params_path)
-    api_url = config["api_webapp_url"]
-    api_url = str(api_url)
-    r = requests.post(api_url, json = data_json)
-    #{"duration":1,"month":1,"date":1,"age":13,"balance":0,"pout":1,"job":1,"camp":1,"contact":1,"house":1,"predict":"not deposit"}
 
     try:
-        prediction = json.loads(r.text)
-        prediction= prediction["predict"]
-    except Exception as e:
-        print(e)
-    print("LLAMADA DESDE EL API")
-    print('PREDICTION:{}'.format(prediction), file=sys.stderr)
-    return prediction 
+        if validate_input(data_json):
+
+            config = read_params(params_path)
+            api_url = config["api_webapp_url"]
+            api_url = str(api_url)
+            r = requests.post(api_url, json = data_json)
+            #{"duration":1,"month":1,"date":1,"age":13,"balance":0,"pout":1,"job":1,"camp":1,"contact":1,"house":1,"predict":"not deposit"}
+
+            try:
+                prediction = json.loads(r.text)
+                prediction= prediction["predict"]
+            except Exception as e:
+                print(e)
+            print("LLAMADA DESDE EL API")
+            print('PREDICTION:{}'.format(prediction), file=sys.stderr)
+            return prediction 
+
+
+    except NotANumber as e:
+        prediction =  str(e)
+        return prediction 
+
 
 
 if __name__ =='__main__':
