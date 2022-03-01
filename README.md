@@ -14,7 +14,11 @@ https://mlops-webapp.herokuapp.com/
 
 ## TEST
 - Se instalo pytest para realizar pruebas de llamada al api con valores correctos he incorrectos
-- Se creo la carpeta **tests** y adiciono el archivo **test_config.py**
+- Se adiciono el archivo **test_config.py** para hacer las pruebas a la llamada al api con variables correctas e incorrectas
+```bash
+pytest -v
+```
+
 
 
 ## CI/CD
