@@ -1,16 +1,16 @@
 <html>
 
-<title>Bank Marketing</title>
+  <title>Bank Marketing</title>
 
 
-    <head>
-        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        </head>
+  <head>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 
 
 
-<div class="wrapper fadeInDown">
+  <div class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Tabs Titles -->
       <h3>Bank Marketing Analysis</h3>
@@ -94,4 +94,56 @@
   
     </div>
   </div>
+
+  <!--
+  <div class="container-fluid masthead">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+            <form method="POST">
+                <div class="form-group">
+                  <label for="translation">
+                      <blockquote class="blockquote">
+                          <p class="mb-2">Enter the details as indicated:</p>
+                      </blockquote>
+                  </label>
+                  <textarea class="form-control" name="number_vmail_messages" rows="1" 
+                      placeholder="number_vmail_messages"></textarea>
+                  <textarea class="form-control" name="total_day_calls" rows="1"
+                      placeholder="total_day_calls"></textarea>
+                  <textarea class="form-control" name="total_eve_minutes" rows="1"
+                      placeholder="total_eve_minutes"></textarea>
+                  <textarea class="form-control" name="total_eve_charge" rows="1"
+                      placeholder="total_eve_charge"></textarea>
+                  <textarea class="form-control" name="total_intl_minutes" rows="1"
+                      placeholder="total_intl_minutes"></textarea>
+                  <textarea class="form-control" name="number_customer_service_calls" rows="1"
+                      placeholder="number_customer_service_calls"></textarea>
+              </div>
+
+              <div class="form-group">
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">Predict</button></br>
+              </br>
+            </form>
+        </div>
+        <div class="col">
+            <form>
+                <div class="form-group">
+                    <label for="translation-result">
+
+                        <blockquote class="blockquote">
+                            <p class="mb-2">Prediction:</p>
+                        </blockquote>
+
+                    </label>
+                    <textarea readonly class="form-control" id="exTextarea" rows="5">{{ response }}</textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+
+  -->
+
 </html>
