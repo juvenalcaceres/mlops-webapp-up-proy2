@@ -68,7 +68,7 @@ def validate_input(dict_request):
         except Exception as e:    
             try:
                 print(val)
-                #val=float(val)
+                val=float(val)
             except Exception as e:
                 raise NotANumber
     return True
