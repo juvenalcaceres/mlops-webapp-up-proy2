@@ -1,2 +1,1 @@
-api_webapp_url: https://docker-fastapi-joenvihe.herokuapp.com/predict
 api_webapp_url_azure: http://f30906f9-8452-4d2c-9c56-a01bf8d89a01.eastus.azurecontainer.io/score
