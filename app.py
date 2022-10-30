@@ -66,11 +66,12 @@ def validate_input(dict_request):
         try:
             val=int(val)
         except Exception as e:    
-            try:
-                print(val)
-                val=float(val)
-            except Exception as e:
-                raise NotANumber
+            #try:
+            #    print(val)
+            #    val=float(val)
+            #except Exception as e:
+            #    raise NotANumber
+            return True
     return True
 
 def predict_api(data_json):
