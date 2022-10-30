@@ -46,6 +46,9 @@ def GetValues():
         "age":age
     }
 
+    data_json = [
+        [pregnancies,plasmaglucose,diastolicbloodpressure,tricepsthickness,seruminsulin,bmi,diabetespedigree,age]
+    ]
     op1 = predict_api(data_json)
     
     #*************************************************************
@@ -83,10 +86,24 @@ def predict_api(data_json):
             #api_url = config["api_webapp_url"]
             api_url = config["api_webapp_url_azure"]
             api_url = str(api_url)
-            r = requests.post(api_url, json = data_json)
+
+            #x_new = [[2,180,74,24,21,23.9091702,1.488172308,22],
+            #       [0,148,58,11,179,39.19207553,0.160829008,45]]
+
+            # Convert the array to a serializable list in a JSON document
+            input_json = json.dumps({"data": x_new})
+
+            # Set the content type
+            headers = { 'Content-Type':'application/json' }
+
+            predictions = requests.post(endpoint, input_json, headers = headers)
+            predicted_classes = json.loads(predictions.json())
+
+            #r = requests.post(api_url, json = data_json)
             try:
-                prediction = json.loads(r.text)
-                prediction= prediction["predict"]
+                #prediction = json.loads(r.text)
+                #prediction= prediction["predict"]
+                prediction = predicted_classes[i]
             except Exception as e:
                 print(e)
             print("LLAMADA DESDE EL API")
