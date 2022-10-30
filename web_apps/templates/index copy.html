@@ -17,33 +17,65 @@
         <input required type="number" id="age" class="fadeIn second" name="age" placeholder="Enter the age of the customer (18- 75)">
 
         <input required type="number" id="duration(in minutes)" class="fadeIn second" name="duration" placeholder="duration of call">
-        <!-- 
-          'Pregnancies',
-          'PlasmaGlucose',
-          'DiastolicBloodPressure',
-          'TricepsThickness',
-          'SerumInsulin',
-          'BMI',
-          'DiabetesPedigree',
-          'Age'
-          0,148,58,11,179,39.19207553,0.160829008,45
-        -->
+        
+        <select required name="month" id="ordinal_month", class="fadeIn second">
+            <option value="" disabled selected>Select contact month</option>
+            <option value="jan">Jan</option>
+            <option value="feb">Feb</option>
+            <option value="mar">Mar</option>
+            <option value="apr">Apr</option>
+            <option value="may">May</option>
+            <option value="jun">Jun</option>
+            <option value="jul">Jul</option>
+            <option value="aug">Aug</option>
+            <option value="sep">Sep</option>
+            <option value="oct">Oct</option>
+            <option value="nov">Nov</option>
+            <option value="dec">Dec</option>
+          </select>
 
-        <input required type="number" id="preganancies" class="fadeIn second" name="preganancies"" placeholder="preganancies">
+        <input required type="number" id="day" class="fadeIn second" name="date" placeholder="contact date of month">
 
-        <input required type="number" id="plasmaglucose" class="fadeIn second" name="PlasmaGlucose" placeholder="PlasmaGlucose">
+        <input required type="number" id="balance" class="fadeIn second" name="balance" placeholder="balance amount (max amout is 4087)">
 
-        <input required type="number" id="diastolicbloodpressure" class="fadeIn second" name="DiastolicBloodPressure" placeholder="DiastolicBloodPressure">
+        <select required name="poutcome" id="ordinal_poutcome", class="fadeIn second">
+            <option value="" disabled selected>Select previous outcome</option>
+            <option value="success">success</option>
+            <option value="failure">failure</option>
+            <option value="other">other</option>
+            <option value="unknown">unknown</option>
+        </select>
 
-        <input required type="number" id="tricepsthickness" class="fadeIn second" name="TricepsThickness" placeholder="TricepsThickness">
+        <select  required name="job_type" id="job_type", class="fadeIn second">
+            <option value="" disabled selected>Select type of the job</option>
+            <option value="admin">Admin</option>
+            <option value="blue-collar">Blue-Collar'</option>
+            <option value="entrepreneur">Entrepreneur</option>
+            <option value="housemaid">Housemaid</option>
+            <option value="management">Management</option>
+            <option value="retired">Retired</option>
+            <option value="self-employed">Self-Employed</option>
+            <option value="services">Services</option>
+            <option value="student">Student</option>
+            <option value="technician">Technician</option>
+            <option value="unemployed">Unemployed</option>
+            <option value="unknown">Unknown</option>
+          </select>
 
-        <input required type="number" id="seruminsulin" class="fadeIn second" name="SerumInsulin" placeholder="SerumInsulin">
+        <input required type="number" id="campaign" class="fadeIn second" name="campaign" placeholder="Nos times the client was contacted(1-63)">
 
-        <input required type="float" id="bmi" class="fadeIn second" name="bmi" placeholder="BMI">
-
-        <input required type="float" id="diabetespedigree" class="fadeIn second" name="DiabetesPedigree" placeholder="DiabetesPedigree">
-
-        <input required type="number" id="age" class="fadeIn second" name="age" placeholder="Age">
+        <select required name="contact" id="contact", class="fadeIn second">
+          <option value="" disabled selected>Select way you contacted the client</option>
+          <option value="cellular">Cellular</option>
+          <option value="telephone">Telephone</option>
+          <option value="unknown">Unknown</option>
+        </select>
+        
+        <select required name="housing" id="house", class="fadeIn second">
+            <option value="" disabled selected>Does the client have taken housing loan</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
 
         <input required type="submit" class="fadeIn fourth" value="Predict">
        

@@ -1,3 +1,3 @@
 # WEBAPP
 
-Test    
+Web predict diabetes using api in azure
