@@ -57,7 +57,7 @@ def read_params(config_path):
     return config
 
 class  NotANumber(Exception):
-    def __init__(self, message="Values entered are not Numerical"):
+    def __init__(self, message="Los valores no son numericos"):
         self.message = message
         super().__init__(self.message)
 
@@ -67,7 +67,8 @@ def validate_input(dict_request):
             val=int(val)
         except Exception as e:    
             try:
-                val=float(val)
+                print(val)
+                #val=float(val)
             except Exception as e:
                 raise NotANumber
     return True
