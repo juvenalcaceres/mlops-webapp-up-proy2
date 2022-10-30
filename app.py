@@ -45,10 +45,18 @@ def GetValues():
         "diabetespedigree":diabetespedigree,
         "age":age
     }
-
-    data_json = [
-        [pregnancies,plasmaglucose,diastolicbloodpressure,tricepsthickness,seruminsulin,bmi,diabetespedigree,age]
-    ]
+    data_json = []
+    val = []
+    val.append(pregnancies)
+    val.append(plasmaglucose)
+    val.append(diastolicbloodpressure)
+    val.append(tricepsthickness)
+    val.append(seruminsulin)
+    val.append(bmi)
+    val.append(diabetespedigree)
+    val.append(age) 
+    data_json.append(val)
+        
     op1 = predict_api(data_json)
     
     #*************************************************************
