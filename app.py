@@ -95,6 +95,7 @@ def predict_api(data_json):
             #api_url = config["api_webapp_url_azure"]
             #api_url = str(api_url)
             endpoint = config["api_webapp_url_azure"]
+            
             #x_new = [[2,180,74,24,21,23.9091702,1.488172308,22],
             #       [0,148,58,11,179,39.19207553,0.160829008,45]]
 
@@ -113,6 +114,8 @@ def predict_api(data_json):
                 #prediction= prediction["predict"]
                 prediction = predicted_classes[i]
             except Exception as e:
+                print('This is error output', file=sys.stderr)
+                print('This is standard output', file=sys.stdout)
                 print(e)
             print("LLAMADA DESDE EL API")
             print('PREDICTION:{}'.format(prediction), file=sys.stderr)
