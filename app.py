@@ -84,9 +84,9 @@ def predict_api(data_json):
 
             config = read_params(params_path)
             #api_url = config["api_webapp_url"]
-            api_url = config["api_webapp_url_azure"]
-            api_url = str(api_url)
-
+            #api_url = config["api_webapp_url_azure"]
+            #api_url = str(api_url)
+            endpoint = config["api_webapp_url_azure"]
             #x_new = [[2,180,74,24,21,23.9091702,1.488172308,22],
             #       [0,148,58,11,179,39.19207553,0.160829008,45]]
 
