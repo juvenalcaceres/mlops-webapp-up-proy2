@@ -96,8 +96,8 @@ def predict_api(data_json):
             #api_url = str(api_url)
             endpoint = config["api_webapp_url_azure"]
             
-            #x_new = [[2,180,74,24,21,23.9091702,1.488172308,22],
-            #       [0,148,58,11,179,39.19207553,0.160829008,45]]
+            x_new = [[2,180,74,24,21,23.9091702,1.488172308,22],
+                   [0,148,58,11,179,39.19207553,0.160829008,45]]
 
             # Convert the array to a serializable list in a JSON document
             input_json = json.dumps({"data": x_new})
@@ -112,7 +112,7 @@ def predict_api(data_json):
             try:
                 #prediction = json.loads(r.text)
                 #prediction= prediction["predict"]
-                prediction = predicted_classes[i]
+                prediction = predicted_classes[0]
             except Exception as e:
                 print('This is error output', file=sys.stderr)
                 print('This is standard output', file=sys.stdout)
