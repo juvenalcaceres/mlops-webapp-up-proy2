@@ -88,6 +88,7 @@ def validate_input(dict_request):
 def predict_api(data_json):
 
     try:
+        return str(data_json)
         if validate_input(data_json):
             return "Hola1"
             config = read_params(params_path)
