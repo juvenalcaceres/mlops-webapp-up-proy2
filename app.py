@@ -103,7 +103,7 @@ def predict_api(data_json):
             try:
                 input_json = json.dumps({"data": x_new})
             except Exception as e:
-                return "ESTO ES ERROR 4 {}".format(e) 
+                return "ESTO ES ERROR 4 {}".format(str(e)) 
 
             # Set the content type
             try:
@@ -111,7 +111,7 @@ def predict_api(data_json):
                 predictions = requests.post(endpoint, input_json, headers = headers)
                 predicted_classes = json.loads(predictions.json())
             except Exception as e:
-                return "ESTO ES ERROR 2 {}".format(e) 
+                return "ESTO ES ERROR 2 {}".format(str(e)) 
             
             #r = requests.post(api_url, json = data_json)
             try:
@@ -122,7 +122,7 @@ def predict_api(data_json):
                 print('This is error output', file=sys.stderr)
                 print('This is standard output', file=sys.stdout)
                 print(e)
-                return "ESTO ES ERROR {}".format(e)
+                return "ESTO ES ERROR {}".format(str(e))
             print("LLAMADA DESDE EL API")
             print('PREDICTION:{}'.format(prediction), file=sys.stderr)
             return prediction 
