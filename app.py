@@ -117,10 +117,11 @@ def predict_api(data_json):
                 print('This is error output', file=sys.stderr)
                 print('This is standard output', file=sys.stdout)
                 print(e)
+                return "ESTO ES ERROR {}".format(e)
             print("LLAMADA DESDE EL API")
             print('PREDICTION:{}'.format(prediction), file=sys.stderr)
             return prediction 
-
+            
 
     except NotANumber as e:
         prediction =  str(e)
