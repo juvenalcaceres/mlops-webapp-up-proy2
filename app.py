@@ -88,18 +88,18 @@ def validate_input(dict_request):
 def predict_api(data_json):
 
     try:
-        return str(data_json)
+        #return str(data_json)
         if validate_input(data_json):
-            return "Hola1"
+            #return "Hola1"
             config = read_params(params_path)
             #api_url = config["api_webapp_url"]
             #api_url = config["api_webapp_url_azure"]
             #api_url = str(api_url)
             endpoint = config["api_webapp_url_azure"]
             
-            x_new = [[2,180,74,24,21,23.9091702,1.488172308,22],
-                   [0,148,58,11,179,39.19207553,0.160829008,45]]
-
+            #x_new = [[2,180,74,24,21,23.9091702,1.488172308,22],
+            #       [0,148,58,11,179,39.19207553,0.160829008,45]]
+            x_new = data_json
             # Convert the array to a serializable list in a JSON document
             try:
                 input_json = json.dumps({"data": x_new})
