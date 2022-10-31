@@ -88,9 +88,8 @@ def validate_input(dict_request):
 def predict_api(data_json):
 
     try:
-        return "Hola"
         if validate_input(data_json):
-
+            return "Hola1"
             config = read_params(params_path)
             #api_url = config["api_webapp_url"]
             #api_url = config["api_webapp_url_azure"]
