@@ -100,7 +100,10 @@ def predict_api(data_json):
                    [0,148,58,11,179,39.19207553,0.160829008,45]]
 
             # Convert the array to a serializable list in a JSON document
-            input_json = json.dumps({"data": x_new})
+            try:
+                input_json = json.dumps({"data": x_new})
+            except Exception as e:
+                return "ESTO ES ERROR 4 {}".format(e) 
 
             # Set the content type
             try:
