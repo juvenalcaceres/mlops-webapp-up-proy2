@@ -132,5 +132,7 @@ def predict_api(data_json):
 
 
 if __name__ =='__main__':
-    app.run(host ='0.0.0.0', port = port ,debug = True)
+    app.debug = True
+    app.run()
+    #app.run(host ='0.0.0.0', port = port ,debug = True)
 #########################################################################
