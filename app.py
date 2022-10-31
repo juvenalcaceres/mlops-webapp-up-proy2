@@ -103,11 +103,13 @@ def predict_api(data_json):
             input_json = json.dumps({"data": x_new})
 
             # Set the content type
-            headers = { 'Content-Type':'application/json' }
-
-            predictions = requests.post(endpoint, input_json, headers = headers)
-            predicted_classes = json.loads(predictions.json())
-
+            try:
+                headers = { 'Content-Type':'application/json' }
+                predictions = requests.post(endpoint, input_json, headers = headers)
+                predicted_classes = json.loads(predictions.json())
+            except Exception as e:
+                return "ESTO ES ERROR 2 {}".format(e) 
+            
             #r = requests.post(api_url, json = data_json)
             try:
                 #prediction = json.loads(r.text)
