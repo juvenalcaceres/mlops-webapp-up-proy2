@@ -73,8 +73,9 @@ class  NotANumber(Exception):
         super().__init__(self.message)
 
 def validate_input(dict_request):
-    for _, val in dict_request.items():
-        try:
+    #for _, val in dict_request.items():
+    for val in dict_request:
+         try:
             val=int(val)
         except Exception as e:    
             #try:
@@ -89,7 +90,7 @@ def predict_api(data_json):
 
     try:
         #return str(data_json)
-        if validate_input(data_json):
+        if validate_input(data_json[0]):
             #return "Hola1"
             config = read_params(params_path)
             #api_url = config["api_webapp_url"]
