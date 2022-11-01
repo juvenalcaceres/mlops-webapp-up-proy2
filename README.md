@@ -12,3 +12,7 @@ Datos para test:
 - BMI = 39.19207553
 - DiabetesPedigree = 0.160829008
 - Age = 45
+
+Comando para hacer push con token:
+git push https://<token>@github/<nombre-usuario>/<nombre-repo>
+git push https://<token>@github/joenvihe/mlops-webapp-up.git
