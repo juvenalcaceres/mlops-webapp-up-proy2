@@ -13,17 +13,6 @@
   
       <!-- Login Form -->
       <form action= "{{ url_for('GetValues')}}" method="post">
-        <!-- 
-          'Pregnancies',
-          'PlasmaGlucose',
-          'DiastolicBloodPressure',
-          'TricepsThickness',
-          'SerumInsulin',
-          'BMI',
-          'DiabetesPedigree',
-          'Age'
-          0,148,58,11,179,39.19207553,0.160829008,45
-        -->
 
         <input required type="number" id="pregnancies" class="fadeIn second" name="pregnancies"" placeholder="Pregnancies">
         <input required type="number" id="plasmaglucose" class="fadeIn second" name="plasmaglucose" placeholder="PlasmaGlucose">
@@ -46,56 +35,5 @@
   
     </div>
   </div>
-
-  <!--
-  <div class="container-fluid masthead">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-            <form method="POST">
-                <div class="form-group">
-                  <label for="translation">
-                      <blockquote class="blockquote">
-                          <p class="mb-2">Enter the details as indicated:</p>
-                      </blockquote>
-                  </label>
-                  <textarea class="form-control" name="number_vmail_messages" rows="1" 
-                      placeholder="number_vmail_messages"></textarea>
-                  <textarea class="form-control" name="total_day_calls" rows="1"
-                      placeholder="total_day_calls"></textarea>
-                  <textarea class="form-control" name="total_eve_minutes" rows="1"
-                      placeholder="total_eve_minutes"></textarea>
-                  <textarea class="form-control" name="total_eve_charge" rows="1"
-                      placeholder="total_eve_charge"></textarea>
-                  <textarea class="form-control" name="total_intl_minutes" rows="1"
-                      placeholder="total_intl_minutes"></textarea>
-                  <textarea class="form-control" name="number_customer_service_calls" rows="1"
-                      placeholder="number_customer_service_calls"></textarea>
-              </div>
-
-              <div class="form-group">
-              </div>
-              <button type="submit" class="btn btn-primary mb-2">Predict</button></br>
-              </br>
-            </form>
-        </div>
-        <div class="col">
-            <form>
-                <div class="form-group">
-                    <label for="translation-result">
-
-                        <blockquote class="blockquote">
-                            <p class="mb-2">Prediction:</p>
-                        </blockquote>
-
-                    </label>
-                    <textarea readonly class="form-control" id="exTextarea" rows="5">{{ response }}</textarea>
-                </div>
-            </form>
-        </div>
-    </div>
-  </div>
-
-  -->
 
 </html>

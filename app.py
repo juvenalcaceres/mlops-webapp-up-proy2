@@ -5,8 +5,6 @@ import sys
 import requests
 import json 
 
-port = int(os.environ.get("PORT", 5000))
-
 static = os.path.join('web_apps', 'static')
 template = os.path.join('web_apps', 'templates')
 
@@ -21,10 +19,8 @@ def home():
     return render_template('index.html')
 
 @app.route('/predict',methods=['POST','GET'])
-
-
 def GetValues():
-    #output = [x for x in request.form.values()]
+
     pregnancies = request.form.get('pregnancies')
     plasmaglucose = request.form.get('plasmaglucose')
     diastolicbloodpressure = request.form.get('diastolicbloodpressure')
@@ -34,17 +30,6 @@ def GetValues():
     diabetespedigree = request.form.get('diabetespedigree')
     age = request.form.get('age')
     
-    #*************************************************************
-    data_json = {
-        "pregnancies":pregnancies,
-        "plasmaglucose":plasmaglucose,
-        "diastolicbloodpressure":diastolicbloodpressure,
-        "tricepsthickness":tricepsthickness,
-        "seruminsulin":seruminsulin,
-        "bmi":bmi,
-        "diabetespedigree":diabetespedigree,
-        "age":age
-    }
     data_json = []
     val = []
     val.append(pregnancies)
@@ -58,8 +43,7 @@ def GetValues():
     data_json.append(val)
         
     op1 = predict_api(data_json)
-    
-    #*************************************************************
+
     return render_template('index.html', prediction_text='The person may: {}'.format(op1))
 
 def read_params(config_path):
@@ -73,71 +57,41 @@ class  NotANumber(Exception):
         super().__init__(self.message)
 
 def validate_input(dict_request):
-    #for _, val in dict_request.items():
     for val in dict_request:
-        try:
-            val=int(val)
-        except Exception as e:    
-            #try:
-            #    print(val)
-            #    val=float(val)
-            #except Exception as e:
-            #    raise NotANumber
-            return True
+        if isinstance(i, int) or isinstance(i, float):
+            continue
+        else:
+            return False
     return True
 
 def predict_api(data_json):
-
     try:
-        #return str(data_json)
         if validate_input(data_json[0]):
-            #return "Hola1"
             config = read_params(params_path)
-            #api_url = config["api_webapp_url"]
-            #api_url = config["api_webapp_url_azure"]
-            #api_url = str(api_url)
             endpoint = config["api_webapp_url_azure"]
-            
-            #x_new = [[2,180,74,24,21,23.9091702,1.488172308,22],
-            #       [0,148,58,11,179,39.19207553,0.160829008,45]]
             x_new = data_json
             # Convert the array to a serializable list in a JSON document
             try:
                 input_json = json.dumps({"data": x_new})
             except Exception as e:
-                return "ESTO ES ERROR 4 {}".format(str(e)) 
-
+                return "error {}".format(str(e)) 
             # Set the content type
             try:
                 headers = { 'Content-Type':'application/json' }
                 predictions = requests.post(endpoint, input_json, headers = headers)
                 predicted_classes = json.loads(predictions.json())
-            except Exception as e:
-                return "ESTO ES ERROR 2 {}".format(str(e)) 
-            
-            #r = requests.post(api_url, json = data_json)
-            try:
-                #prediction = json.loads(r.text)
-                #prediction= prediction["predict"]
                 prediction = predicted_classes[0]
             except Exception as e:
-                print('This is error output', file=sys.stderr)
-                print('This is standard output', file=sys.stdout)
-                print(e)
-                return "ESTO ES ERROR {}".format(str(e))
-            print("LLAMADA DESDE EL API")
-            print('PREDICTION:{}'.format(prediction), file=sys.stderr)
+                return "error {}".format(str(e)) 
             return prediction 
-            
-
+        else:
+            return "error: Nor Int or Float"    
     except NotANumber as e:
-        prediction =  str(e)
-        return prediction 
+        return "error {}".format(str(e))
 
 
 
 if __name__ =='__main__':
     app.debug = True
     app.run()
-    #app.run(host ='0.0.0.0', port = port ,debug = True)
 #########################################################################
