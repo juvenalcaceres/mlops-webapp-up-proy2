@@ -51,17 +51,15 @@ def read_params(config_path):
         config = yaml.safe_load(yaml_file)
     return config
 
-class  NotANumber(Exception):
-    def __init__(self, message="Los valores no son numericos"):
-        self.message = message
-        super().__init__(self.message)
-
 def validate_input(dict_request):
     for val in dict_request:
-        if isinstance(i, int) or isinstance(i, float):
-            continue
-        else:
-            return False
+        try:
+            val=int(val)
+        except Exception as e:
+            try:
+                val=float(val)
+            except Exception as e:
+                return False
     return True
 
 def predict_api(data_json):
@@ -85,8 +83,8 @@ def predict_api(data_json):
                 return "error {}".format(str(e)) 
             return prediction 
         else:
-            return "error: Nor Int or Float"    
-    except NotANumber as e:
+            return "Values entered are not Numerical"    
+    except Exception as e:
         return "error {}".format(str(e))
 
 
