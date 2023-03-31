@@ -66,7 +66,7 @@ def predict_api(data_json):
     try:
         if validate_input(data_json[0]):
             config = read_params(params_path)
-            endpoint = config["api_webapp_url_azure"]
+            endpoint = os.environ.get("rest_endpoint")
             x_new = data_json
             # Convert the array to a serializable list in a JSON document
             try:
@@ -75,7 +75,7 @@ def predict_api(data_json):
                 return "error {}".format(str(e)) 
             # Set the content type
             try:
-                headers = { 'Content-Type':'application/json' }
+                headers = {"Authorization": "Bearer " + os.environ.get("rest_primary_key")}
                 predictions = requests.post(endpoint, input_json, headers = headers)
                 predicted_classes = json.loads(predictions.json())
                 prediction = predicted_classes[0]
