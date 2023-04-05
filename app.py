@@ -66,7 +66,8 @@ def predict_api(data_json):
     try:
         if validate_input(data_json[0]):
             config = read_params(params_path)
-            endpoint = os.environ.get("rest_endpoint")
+            # endpoint = os.environ.get("rest_endpoint")
+            url = 'https://mlops-up-ws-vohpg.eastus.inference.ml.azure.com/score'
             x_new = data_json
             # Convert the array to a serializable list in a JSON document
             try:
@@ -75,8 +76,9 @@ def predict_api(data_json):
                 return "error {}".format(str(e)) 
             # Set the content type
             try:
-                headers = {"Authorization": "Bearer " + os.environ.get("rest_primary_key")}
-                predictions = requests.post(endpoint, input_json, headers = headers)
+                # headers = {"Authorization": "Bearer " + os.environ.get("rest_primary_key")}
+                headers = {"Authorization": "Bearer ApMe8QoNaxwv1D8dCrRrGPSbOegqGHrY"}
+                predictions = requests.post(url, input_json, headers = headers)
                 predicted_classes = json.loads(predictions.json())
                 prediction = predicted_classes[0]
             except Exception as e:
